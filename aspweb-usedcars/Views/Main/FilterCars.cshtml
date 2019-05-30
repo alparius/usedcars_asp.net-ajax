@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Filter";
+    if (Session["username"] == null)
+    {
+        Response.Redirect("/Authentication");
+    }
+}
+
+<script>
+    $(document).ready(function () {
+        // FILTER CARS
+        $("#category").change(function () {
+            $.get("/Main/GetCarsFromCategory", {
+                category: $(this).find(':selected').val(),
+            }, function (response) {
+                $('#car-container').html(response);
+            });
+        });
+        // DELETE A CAR
+        $(document).on('click', '.delete', function () {
+            let deletable_car = $(this).closest('tr');
+            $.get("/Main/DeleteCar", {
+                id: $(this).closest('tr').data('id'),
+            }, function (response) {
+                console.log(response);
+                deletable_car.remove();
+            });
+        });
+        // UPDATE A CAR
+        $(document).on('click', '.update', function () {
+            let id = $(this).closest('tr').data('id');
+            window.location.href = '/Main/GoUpdateCar/' + id;
+        });
+    });
+</script>
+
+<form>
+    <br>
+    <h5><label for="category">Select category:</label></h5>
+    <select class="form-control" id="category">
+        <option value="%">All categories</option>
+        <option value="motorbike">Motorbikes</option>
+        <option value="suv">SUVs</option>
+        <option value="sportscar">Sports cars</option>
+    </select>
+</form>
+
+<br><br>
+<div id="car-container">
+</div>
+
+

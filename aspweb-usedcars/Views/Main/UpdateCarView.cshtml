@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Update";
+    if (Session["username"] == null)
+    {
+        Response.Redirect("/Authentication");
+    }
+    aspweb_usedcars.Models.Car car = (aspweb_usedcars.Models.Car)ViewData["car"];
+}
+
+<br /><br /><br />
+<form action="/Main/UpdateCar" method="POST">
+    <input type="text" value="@car.id" name="id" id="id" hidden>
+    <div class="form-group row">
+        <label for="model" class="col-form-label col-sm-2">Model</label>
+        <input type="text" value="@car.model" name="model" id="model" class="form-control col-sm-10">
+    </div>
+    <div class="form-group row">
+        <label for="engine_power" class="col-form-label col-sm-2">HP</label>
+        <input type="text" value="@car.engine_power" name="engine_power" id="engine_power" class="form-control col-sm-10">
+    </div>
+    <div class="form-group row">
+        <label for="fuel" class="col-form-label col-sm-2">Fuel</label>
+        <input type="text" value="@car.fuel" name="fuel" id="fuel" class="form-control col-sm-10">
+    </div>
+    <div class="form-group row">
+        <label for="year" class="col-form-label col-sm-2">Year</label>
+        <input type="text" value="@car.year" name="year" id="year" class="form-control col-sm-10">
+    </div>
+    <div class="form-group row">
+        <label for="color" class="col-form-label col-sm-2">Color</label>
+        <input type="text" value="@car.color" name="color" id="color" class="form-control col-sm-10">
+    </div>
+    <div class="form-group row">
+        <label for="price" class="col-form-label col-sm-2">Price</label>
+        <input type="text" value="@car.price" name="price" id="price" class="form-control col-sm-10">
+    </div>
+    <br>
+    <div class="form-group row">
+        <button class="col-sm-2 btn" onclick="location.href='@Url.Action("", "Main")';return false;">Abort</button>
+        <label class="col-sm-1"></label>
+        <input class="col-sm-2 btn center-block" type="submit" value="Commit update" />
+    </div>
+</form>
+

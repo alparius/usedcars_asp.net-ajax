@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+
+<br /><br /><br />
+<form name="register" action="/Authentication/Register" method="POST">
+    <input type="text" name="username" placeholder="username" class="form-control center-block" required />
+    <br />
+    <input type="password" name="password1" placeholder="password" class="form-control center-block" required />
+    <br />
+    <input type="password" name="password2" placeholder="re-enter password" class="form-control center-block" required />
+    <br />
+    <input class="btn center-block" type="submit" value="Register" />
+</form>
+
