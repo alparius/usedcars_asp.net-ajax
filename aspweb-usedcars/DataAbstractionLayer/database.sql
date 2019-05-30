@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS cars (
 DROP TABLE IF EXISTS users;
 CREATE TABLE IF NOT EXISTS users (
     username VARCHAR(50) NOT NULL,
-    password VARCHAR(50) NOT NULL,)
+    password VARCHAR(50) NOT NULL
 );
 
 INSERT INTO cars(model, engine_power, fuel, year, color, price, category) VALUES
